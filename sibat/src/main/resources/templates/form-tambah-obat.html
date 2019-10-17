@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title> Tambah Obat </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='Form Tambah Obat')"></nav>
+<h3> Tambah Obat </h3>
+<form th:action="@{/obat/}" th:object="${obat}" method="POST">
+    Nama <br>
+    <input type="text" name="nama" />
+    <br>
+    Nomor Registrasi <br>
+    <input type="text" name="nomorRegistrasi" />
+    <br>
+    Tanggal Terbit <br>
+    <input type="date" name="tanggalTerbit" />
+    <br>
+    Harga <br>
+    <input type="number" name="harga" />
+    <br>
+    Bentuk <br>
+    <select name="bentuk">
+        <option value="Cairan">Cairan</option>
+        <option value="Kapsul">Kapsul</option>
+        <option value="Tablet">Tablet</option>
+    </select>
+    <br>
+    Jenis <br>
+    <select name="jenis">
+        <option value="Generik">Generik</option>
+        <option value="Paten">Paten</option>
+    </select>
+    <br>
+    Supplier <br>
+    <select name="supplier">
+        <option value="PT Bundamedik">PT Bundamedik</option>
+        <option value="Kimia Farma">Kimia Farma</option>
+    </select>
+    <br>
+    <button type="submit">Tambah Supplier</button>
+    <button class="btn btn-primary" type="submit"> Submit </button>
+</form>
+</body>
+</html>

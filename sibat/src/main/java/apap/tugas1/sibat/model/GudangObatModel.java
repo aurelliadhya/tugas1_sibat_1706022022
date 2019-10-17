@@ -27,4 +27,28 @@ public class GudangObatModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ObatModel obat;
+
+    public Long getIdGudangObat() {
+        return idGudangObat;
+    }
+
+    public void setIdGudangObat(Long idGudangObat) {
+        this.idGudangObat = idGudangObat;
+    }
+
+    public GudangModel getGudang() {
+        return gudang;
+    }
+
+    public void setGudang(GudangModel gudang) {
+        this.gudang = gudang;
+    }
+
+    public ObatModel getObat() {
+        return obat;
+    }
+
+    public void setObat(ObatModel obat) {
+        this.obat = obat;
+    }
 }

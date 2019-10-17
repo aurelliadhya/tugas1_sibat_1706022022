@@ -25,4 +25,28 @@ public class ObatSupplierModel implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private SupplierModel supplier;
+
+    public Long getIdObatSupplier() {
+        return idObatSupplier;
+    }
+
+    public void setIdObatSupplier(Long idObatSupplier) {
+        this.idObatSupplier = idObatSupplier;
+    }
+
+    public ObatModel getObat() {
+        return obat;
+    }
+
+    public void setObat(ObatModel obat) {
+        this.obat = obat;
+    }
+
+    public SupplierModel getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(SupplierModel supplier) {
+        this.supplier = supplier;
+    }
 }

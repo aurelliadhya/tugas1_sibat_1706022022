@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="'http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-$END$
+<nav th:replace="fragments/fragment :: navbar(content='Daftar Obat')"></nav>
+<div class="card">
+    <table>
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>Kode</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="obat, iterationStatus : *{obatList}">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${obat.kode}"></td>
+                <td th:text="${obat.nama}"></td>
+                <td th:text="${obat.harga}"></td>
+                <td>
+                    <button type="submit" class="btn btn-info">Lihat</button>
+                    <button type="submit" class="btn btn-dark">Ubah</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+</div>
+<button class="btn btn-dark">
+    <a th:href="@{/obat/tambah}" style="color: white">Tambah Obat</a>
+</button>
+
 </body>
 </html>
