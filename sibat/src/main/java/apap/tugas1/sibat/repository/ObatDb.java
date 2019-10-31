@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface ObatDb extends JpaRepository<ObatModel, Long> {
+    Optional<ObatModel> findByNomorRegistrasi(String nomorRegistrasi);
+
     Optional<ObatModel> findByIdObat(Long idObat);
 }

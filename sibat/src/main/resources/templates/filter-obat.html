@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeLeaf.org">
+<head>
+    <title>Filter Obat</title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='SIBAT')"></nav>
+<div class="container-fluid">
+    <h3 style="margin: 1%"> Cari Obat </h3>
+    <br>
+    <table class="table order-list">
+        <form th:action = "@{/obat/filter}" method="GET">
+            <tr>
+                <th>Gudang</th>
+                <td>
+                    <select name="idGudang">
+                        <option value="">-- Pilih Gudang --</option>
+                        <option th:each="gudang : ${gudangList}" th:value="${gudang.idGudang}" th:text="${gudang.nama}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Jenis</th>
+                <td>
+                    <select name ="idJenis">
+                        <option value="">-- Pilih Jenis --</option>
+                        <option th:each="jenis : ${jenisList}" th:value="${jenis.idJenis}" th:text="${jenis.nama}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Supplier</th>
+                <td>
+                    <select name="idSupplier">
+                        <option value="">-- Pilih Supplier --</option>
+                        <option th:each="supplier : ${supplierList}" th:value="${supplier.idSupplier}" th:text="${supplier.nama}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-sm btn-secondary">Cari</button>
+                </td>
+            </tr>
+        </form>
+    </table>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Entries:</th>
+            <td th:text="${jumlahObat}"></td>
+        </tr>
+        <tr>
+            <th>No </th>
+            <th>Kode </th>
+            <th>Nama </th>
+            <th>Harga </th>
+            <th>Gudang</th>
+            <th>Jenis</th>
+            <th>Supplier</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="obat, iterationStatus :   ${dataFilter}">
+            <td><a th:text="${iterationStatus.count}"></a></td>
+            <td><a th:text="${obat.kode}"></a></td>
+            <td><a th:text="${obat.nama}"></a></td>
+            <td><a th:text="'Rp' + ${obat.harga}"></a></td>
+            <td><a th:text="${namaGudang}"></a></td>
+            <td><a th:text="${obat.getJenis().getNama()}"></a></td>
+            <td><a th:text="${namaSupplier}"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>$(document).ready( function () {
+    $('.table').DataTable();
+} );</script>
+</body>
+</html>

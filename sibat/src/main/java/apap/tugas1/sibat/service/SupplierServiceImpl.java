@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -15,5 +16,10 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public List<SupplierModel> getSupplierList() {
         return supplierDb.findAll();
+    }
+
+    @Override
+    public Optional<SupplierModel> getSupplierByIdSupplier(Long idSupplier) {
+        return supplierDb.findByIdSupplier(idSupplier);
     }
 }

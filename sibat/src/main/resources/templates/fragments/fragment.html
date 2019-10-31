@@ -22,14 +22,19 @@
 
 <body>
 <nav th:fragment="navbar(content)" class="navbar navbar-expand-lg dark bg-dark">
-    <a th:text="${content}" class="navbar-brand" href="#"></a>
+    <a th:text="SIBAT" class="navbar-brand" style="color:white" th:href="@{/}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/}">Beranda <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" style="color:white" th:href="@{/}">Beranda <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" style="color:white" th:href="@{/gudang}">Gudang <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" style="color:white" th:href="@{/obat/filter}">Filter <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" style="color:white" th:href="@{/gudang/cari}">Cari <span class="sr-only">(current)</span></a>
         </div>
     </div>
 </nav>

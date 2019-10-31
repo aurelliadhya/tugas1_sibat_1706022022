@@ -7,9 +7,16 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar(content='Daftar Obat')"></nav>
+<h2 style="text-align: center; margin: 3%">Sistem Informasi Inventory Obat</h2>
 <div class="card">
-    <table>
+    <table width="80%" align="center">
         <thead>
+        <tr style="background-color: #1b1e21">
+            <th colspan="2" style="color: white">Daftar Obat</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
         <tr>
             <th>No.</th>
             <th>Kode</th>
@@ -20,13 +27,13 @@
         </thead>
         <tbody>
             <tr th:each="obat, iterationStatus : *{obatList}">
-                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${iterationStatus.count}" align="center"></td>
                 <td th:text="${obat.kode}"></td>
                 <td th:text="${obat.nama}"></td>
-                <td th:text="${obat.harga}"></td>
+                <td th:text="'Rp'+${obat.harga}"></td>
                 <td>
-                    <button type="submit" class="btn btn-info">Lihat</button>
-                    <button type="submit" class="btn btn-dark">Ubah</button>
+                    <button class="btn btn-info"><a th:href="@{/obat/view(noReg=${obat.nomorRegistrasi})}" style="color: white">Lihat</a></button>
+                    <button class="btn btn-dark"><a th:href="@{/obat/ubah(id=${obat.idObat})}" style="color: white">Ubah</a></button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </td>
             </tr>
@@ -34,7 +41,7 @@
     </table>
     <br><br>
 </div>
-<button class="btn btn-dark">
+<button class="btn btn-dark" style="position: absolute; right: 10%;">
     <a th:href="@{/obat/tambah}" style="color: white">Tambah Obat</a>
 </button>
 

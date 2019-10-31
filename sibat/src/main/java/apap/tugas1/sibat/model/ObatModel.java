@@ -3,7 +3,6 @@ package apap.tugas1.sibat.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -34,15 +33,13 @@ public class ObatModel implements Serializable {
     private String kode;
 
     @NotNull
-    @UniqueElements
     @Size(max = 255)
     @Column(name="nama", nullable = false)
     private String nama;
 
     @NotNull
-    @UniqueElements
     @Size(max = 255)
-    @Column(name = "nomorRegistrasi", nullable = false)
+    @Column(name = "nomorRegistrasi", nullable = false, unique= true)
     private String nomorRegistrasi;
 
     @NotNull

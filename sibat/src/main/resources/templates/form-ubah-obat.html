@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="'http://thymeleaf.org">
 <head>
-    <title> Tambah Obat </title>
+    <title> Ubah Obat </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar(content='Form Tambah Obat')"></nav>
-<h3 style="margin: 1%"> Tambah Obat </h3>
+<nav th:replace="fragments/fragment :: navbar(content='Form Ubah Obat')"></nav>
+<h3 style="margin: 1%"> Ubah Obat </h3>
 <table class="table order-list">
-    <form th:action="@{/obat/}" th:object="${obat}" method="POST">
-        <input type="hidden" th:field="${obat.idObat}"/>
+    <form th:action="@{/obat/ubah(id=${obat.idObat})}" th:object="${obat}" method="POST">
+        <input type="hidden" th:field="${obat.idObat}" />
         <tr>
             <th>Nama</th>
             <td><input type="text" th:field="${obat.nama}" /></td>
         </tr>
         <tr>
             <th>Nomor Registrasi</th>
-            <td><input type="text" th:field="${obat.nomorRegistrasi}" /></td>
+            <td><input type="text" readonly th:field="${obat.nomorRegistrasi}" /></td>
         </tr>
         <tr>
             <th>Tanggal Terbit</th>
@@ -43,22 +43,17 @@
             <th>Jenis</th>
             <td>
                 <select th:field="*{jenis}">
-                    <option th:value="null" selected>-- Pilih Jenis --</option>
-                    <option th:each="jenisObat : ${jenisList}" th:text="${jenisObat.nama}" th:value="${jenisObat.idJenis}"></option>
+                    <option disabled th:value="null" selected>-- Pilih Jenis --</option>
+                    <option disabled th:each="jenisObat : ${jenisList}" th:text="${jenisObat.nama}" th:value="${jenisObat.idJenis}"></option>
                 </select>
             </td>
         </tr>
         <tr>
             <th>Supplier</th>
             <td>
-                <select th:each="obatSupplier, iterationStatus : *{listObatSupplier}" th:field="*{listObatSupplier[__${iterationStatus.index}__].supplier}">
-                    <option th:each="supplier : ${supplierList}" th:text="${supplier.nama}" th:value="${supplier.idSupplier}"></option>
+                <select name="supplier">
+                    <option th:each="supplier : ${supplierList}" th:text="${supplier.nama}" disabled></option>
                 </select>
-            </td>
-            <td>
-                <button type="submit" name="addRow">
-                    <a>Tambah Supplier</a>
-                </button>
             </td>
         </tr>
         <tr>

@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "gudang")
 public class GudangModel implements Serializable {
-    @NotNull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGudang;
@@ -27,6 +26,10 @@ public class GudangModel implements Serializable {
 
     @OneToMany(mappedBy = "gudang", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<GudangObatModel> listGudangObat;
+
+//    @ManyToMany(mappedBy = "listGudang")
+//    private List<ObatModel> listObat;
+
 
     public Long getIdGudang() {
         return idGudang;
