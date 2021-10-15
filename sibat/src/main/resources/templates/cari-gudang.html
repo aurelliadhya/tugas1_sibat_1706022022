@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title> Lihat Daftar Obat Kadaluarsa </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='Form Tambah Obat')"></nav>
+<h3 style="margin: 1%"> Lihat Daftar Obat Kadaluarsa </h3>
+<table class="table order-list">
+    <form th:action="@{/gudang/expired-obat}" method="GET">
+        <tr>
+            <th>Pilih Gudang</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="idGudang">
+                    <option th:each="gudang : ${gudangList}" th:value="${{gudang.idGudang}}" th:text="${gudang.nama}"></option>
+                </select>
+                <button class="btn btn-primary" type="submit"> Lihat </button>
+            </td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>

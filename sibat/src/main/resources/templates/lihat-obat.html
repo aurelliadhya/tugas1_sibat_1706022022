@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title>Detail Data Obat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='SIBAT')"></nav>
+<div>
+    <h2 style="text-align: center;margin: 2%">Detail Data Obat</h2>
+    <table align="center">
+        <thead>
+        <tr>
+            <th>Kode</th>
+            <td th:text="${obat.kode}"></td>
+        </tr>
+        <tr>
+            <th>Nama</th>
+            <td th:text="${obat.nama}"></td>
+        </tr>
+        <tr>
+            <th>Nomor Registrasi</th>
+            <td th:text="${obat.nomorRegistrasi}"></td>
+        </tr>
+        <tr>
+            <th>Bentuk</th>
+            <td th:text="${obat.bentuk}"></td>
+        </tr>
+        <tr>
+            <th>Tanggal Terbit</th>
+            <td th:text="${obat.tanggalTerbit}"></td>
+        </tr>
+        <tr>
+            <th>Harga</th>
+            <td th:text="'Rp'+${obat.harga}"></td>
+        </tr>
+        <tr>
+            <th>Jenis Obat</th>
+            <td th:text="${obat.jenis.getNama()}"></td>
+        </tr>
+        <tr>
+            <th>Gudang Tempat Disimpan</th>
+            <td th:each="gudangObat : *{gudangObatList}" th:text="${gudangObat.gudang.nama}"></td>
+        </tr>
+        <tr>
+            <th>Supplier</th>
+            <td th:each="supplierObat : *{supplierObatList}" th:text="${supplierObat.supplier.nama}"></td>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

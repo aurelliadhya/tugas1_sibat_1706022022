@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title>Gudang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='Daftar Gudang')"></nav>
+<h2 style="text-align: center; margin: 3%">Sistem Informasi Inventory Obat</h2>
+<div class="card">
+    <table width="80%" align="center">
+        <thead>
+        <tr style="background-color: #1b1e21">
+            <th colspan="2" style="color: white">Daftar Gudang</th>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>No.</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="gudang, iterationStatus : *{gudangList}">
+            <td th:text="${iterationStatus.count}" align="center"></td>
+            <td th:text="${gudang.nama}"></td>
+            <td th:text="${gudang.alamat}"></td>
+            <td>
+                <button class="btn btn-info"><a th:href="@{/gudang/view(idGudang=${gudang.idGudang})}" style="color: white">Lihat</a></button>
+                <button class="btn btn-dark">Ubah</button>
+                <button class="btn btn-danger"><a th:href="@{/gudang/hapus/}+${gudang.getIdGudang()}" style="color: white">Hapus</a></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br>
+</div>
+<button class="btn btn-dark" style="position: absolute; right: 10%;">
+    <a th:href="@{/gudang/tambah}" style="color: white">Tambah Gudang</a>
+</button>
+
+</body>
+</html>

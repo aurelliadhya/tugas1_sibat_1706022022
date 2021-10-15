@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title>Beranda</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='Daftar Obat')"></nav>
+<h2 style="text-align: center; margin: 3%">Sistem Informasi Inventory Obat</h2>
+<div class="card">
+    <table width="80%" align="center">
+        <thead>
+        <tr style="background-color: #1b1e21">
+            <th colspan="2" style="color: white">Daftar Obat</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>No.</th>
+            <th>Kode</th>
+            <th>Nama</th>
+            <th>Harga</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="obat, iterationStatus : *{obatList}">
+                <td th:text="${iterationStatus.count}" align="center"></td>
+                <td th:text="${obat.kode}"></td>
+                <td th:text="${obat.nama}"></td>
+                <td th:text="'Rp'+${obat.harga}"></td>
+                <td>
+                    <button class="btn btn-info"><a th:href="@{/obat/view(noReg=${obat.nomorRegistrasi})}" style="color: white">Lihat</a></button>
+                    <button class="btn btn-dark"><a th:href="@{/obat/ubah(id=${obat.idObat})}" style="color: white">Ubah</a></button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+</div>
+<button class="btn btn-dark" style="position: absolute; right: 10%;">
+    <a th:href="@{/obat/tambah}" style="color: white">Tambah Obat</a>
+</button>
+
+</body>
+</html>

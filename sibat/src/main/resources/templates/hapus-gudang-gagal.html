@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="'http://thymeleaf.org">
+<head>
+    <title>Error</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(content='Unable to Delete Restoran')"></nav>
+<div style="margin: 2%">
+    <h2 th:text="'Gudang memiliki daftar obat.'"></h2>
+    <h2 th:text="'Gudang ' + ${namaGudang} + ' gagal dihapus.'"></h2>
+</div>
+</body>
+</html>
